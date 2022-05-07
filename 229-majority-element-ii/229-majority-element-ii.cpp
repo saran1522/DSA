@@ -4,10 +4,8 @@ public:
         int n=nums.size();
         unordered_map<int,int>m;
         vector<int>ans;
-        for(int i=0;i<n;i++)
-        {
-            m[nums[i]]++;
-        }
+        for(auto x:nums)
+            m[x]++;
         int len=n/3;
         for(auto &it:m)
         {
