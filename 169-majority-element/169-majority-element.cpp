@@ -12,7 +12,6 @@ public:
             maxi=max(it.second,maxi);
             cout<<it.first<<" ";
         }
-        //auto it=m.find(maxi);
         int ans;
         for(auto &it:m)
         {
