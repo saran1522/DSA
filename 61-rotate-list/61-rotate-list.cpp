@@ -23,28 +23,21 @@ public:
             temp=temp->next;
         }
         len++;
-        if(len==k)
+        if(len==k|| k%len==0)
             return head;
         temp->next=head;
-        temp=temp->next;
+        temp=head;
         if(k>len)
         {
           int i=(k/len)+1;
           len=(i*len)-k;
-          while(len>1)
-          {
-            len--;
-            temp=temp->next;
-          }
         }
         else
-        {
           len=len-k;
-          while(len>1)
-          {
+        while(len>1)
+        {
             len--;
             temp=temp->next;
-           }
         }
         head=temp->next;
         temp->next=NULL;
