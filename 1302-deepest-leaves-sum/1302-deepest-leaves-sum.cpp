@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    int leafsum(TreeNode* root, int h, int cnt, int sum)
+    /*int leafsum(TreeNode* root, int h, int cnt, int sum)
     {
         if(!root)
             return sum;
@@ -38,12 +38,35 @@ public:
       int right=hight(root->right);
       int ans=max(left,right)+1;
       return ans;
-    }
+    }*/
     
     int deepestLeavesSum(TreeNode* root) 
     {
-      int h=hight(root);
-      int ans=leafsum(root,h,1,0);
-      return ans;
+        queue<TreeNode*>q;
+        q.push(root);
+        q.push(NULL);
+        int sum=0;
+        int ans;
+        while(!q.empty())
+        {
+            TreeNode* frontnode=q.front();
+            q.pop();
+            if(frontnode==NULL)
+            {
+                ans=sum;
+                sum=0;
+                if(!q.empty())
+                  q.push(NULL);
+            }
+            else
+            {
+                sum+=frontnode->val;
+                if(frontnode->left)
+                q.push(frontnode->left);
+                if(frontnode->right)
+                q.push(frontnode->right);
+            }
+        }
+        return ans;
     }
 };
