@@ -10,21 +10,21 @@
 
 class Solution {
 public:
-    TreeNode* solve(TreeNode* clon, TreeNode* target)
+    TreeNode* solve(TreeNode* origin, TreeNode* clon, TreeNode* target)
     {
-        if(!clon)
+        if(!origin)
             return NULL;
-        if(clon->val==target->val)
+        if(origin==target)
             return clon;
         TreeNode* ans=NULL;
-        ans=solve(clon->left, target);
-         if(ans!=NULL)
-             return ans;
-        ans=solve(clon->right, target);
-             return ans;
+        ans=solve(origin->left, clon->left, target);
+        if(ans!=NULL)
+            return ans;
+        ans=solve(origin->right, clon->right, target);
+        return ans;
     }
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) 
     {
-       return solve(cloned, target);
+       return solve(original, cloned, target);
     }
 };
