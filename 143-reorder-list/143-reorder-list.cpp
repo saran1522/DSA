@@ -16,7 +16,7 @@ public:
         deque<ListNode*>dq;
         while(temp!=NULL)
         {
-            dq.push_back(temp);
+            dq.emplace_back(temp);
             temp=temp->next;
         }
         ListNode* newhead=new ListNode(-1);
