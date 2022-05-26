@@ -6,7 +6,7 @@ public:
         {
             if(n&1)
                 cnt++;
-            n=n>>1;
+            n=n/2;
         }
         return cnt;
     }
