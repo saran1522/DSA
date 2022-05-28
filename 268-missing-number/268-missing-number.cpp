@@ -5,11 +5,11 @@ public:
         int ans=0;
         for(int i=0;i<n;++i)
         {
-            ans^=nums[i];
+            ans=ans^nums[i];
         }
         for(int i=0;i<=n;i++)
         {
-            ans^=i;
+            ans=ans^i;
         }
         return ans;
     }
