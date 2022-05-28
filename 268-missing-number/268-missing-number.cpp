@@ -8,6 +8,7 @@ public:
         int n=nums.size();
         for(int i=1;i<=n;i++)
         realsum+=i;
-        return realsum-sum;
+        int ans= realsum-sum;
+        return ans;
     }
 };
