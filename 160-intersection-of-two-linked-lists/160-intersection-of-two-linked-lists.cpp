@@ -12,11 +12,15 @@ public:
         int lenA=0,lenB=0;
         ListNode* tempA=headA;
         ListNode* tempB=headB;
+        
+        //calculating lenght of list1
         while(tempA!=NULL)
         {
             lenA++;
             tempA=tempA->next;
         }
+        
+        //calculating length of list2
         while(tempB!=NULL)
         {
             lenB++;
@@ -24,6 +28,8 @@ public:
         }
         tempA=headA;
         tempB=headB;
+        
+        //making both heads(length of list) equal 
             while(lenA>lenB)
             {
                 tempA=tempA->next;
@@ -34,6 +40,8 @@ public:
                 tempB=tempB->next;
                 lenB--;
             }
+        
+        //checking if lists intersecting
             while(tempA!=NULL && tempB!=NULL)
             {
                 if(tempA==tempB)
