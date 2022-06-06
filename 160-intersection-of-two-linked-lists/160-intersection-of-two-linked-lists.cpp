@@ -29,13 +29,6 @@ public:
             tempB=headB;
             while(len--)
                 tempA=tempA->next;
-            while(tempA!=NULL&&tempB!=NULL)
-            {
-                if(tempA==tempB)
-                    return tempA;
-                tempA=tempA->next;
-                tempB=tempB->next;
-            }
         }
         else
         {
@@ -44,6 +37,7 @@ public:
             tempB=headB;
             while(len--)
                 tempB=tempB->next;
+        }
             while(tempA!=NULL&&tempB!=NULL)
             {
                 if(tempA==tempB)
@@ -51,7 +45,6 @@ public:
                 tempA=tempA->next;
                 tempB=tempB->next;
             }
-        }
         return NULL;
     }
 };
