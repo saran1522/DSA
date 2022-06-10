@@ -7,8 +7,8 @@ public:
         {
             if(nums[i]+nums[j]==t)
             {
-                ans.push_back(i+1);
-                ans.push_back(j+1);
+                ans.emplace_back(i+1);
+                ans.emplace_back(j+1);
                 return ans;
             }
             else if(nums[i]+nums[j]>t)
