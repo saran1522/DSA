@@ -15,33 +15,32 @@ public:
         if(head==NULL || head->next==NULL)
             return head;
         
-        queue<ListNode*>qu;
+        //queue<ListNode*>qu;
         ListNode* temp=head;
         head= new ListNode(-1);
-        ListNode* newTail=head;
+        ListNode* tail=head;
+        ListNode* newHead=new ListNode(-1);
+        ListNode* newTail=newHead;
         
         while(temp!=NULL)
         {
             if(temp->val<x)
             {
-                newTail->next=new ListNode(temp->val);\
-                newTail=newTail->next;
+                tail->next=new ListNode(temp->val);\
+                tail=tail->next;
             }
             
             else
-                qu.push(temp);
+            {
+                newTail->next=new ListNode(temp->val);
+                newTail=newTail->next;
+            }
             
             temp=temp->next;
         }
         
-        while(!qu.empty())
-        {
-            newTail->next=qu.front();
-            newTail=newTail->next;
-            qu.pop();
-        }
-        
         newTail->next=NULL;
+        tail->next=newHead->next;
         head=head->next;
         return head;
     }
