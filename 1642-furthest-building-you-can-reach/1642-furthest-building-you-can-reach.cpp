@@ -35,7 +35,7 @@ public:
         int lo = 0, hi = n-1;
         while(lo < hi)
         {
-            int mid = (lo+hi+1)/2;
+            int mid = lo+((hi-lo)/2)+1;
             if(check(heights, bricks, ladders, mid))
                 lo = mid;  
             else
