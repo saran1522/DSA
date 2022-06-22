@@ -11,6 +11,8 @@ public:
         return ind;
     }
     int findKthLargest(vector<int>& nums, int k) {
+        if(nums.size()==1)
+            return nums[0];
         int ans;
         while(k--)
         {
