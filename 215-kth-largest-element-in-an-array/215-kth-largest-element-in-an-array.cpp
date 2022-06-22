@@ -16,12 +16,9 @@ public:
         int ans;
         while(k--)
         {
-            auto i=nums.begin();
             int ind=maximum(nums);
             ans=nums[ind];
-            while(ind--)
-             ++i;
-            nums.erase(i);
+            nums[ind]=INT_MIN;
         }
         return ans;
     }
