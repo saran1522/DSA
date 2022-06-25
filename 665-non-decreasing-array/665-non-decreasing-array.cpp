@@ -2,14 +2,14 @@ class Solution {
 public:
     bool checkPossibility(vector<int>& nums) {
           int violation = 0;
-        for(int i=1;i<nums.size();i++){
+        for(int i=1;i<nums.size();++i)
+        {
             // case for violation
-            if(nums[i-1] > nums[i]){
-                
+            if(nums[i-1] > nums[i])
+            {
                 // at max, we can have one violation. So if it has been occured before => return false
-                if(violation == 1){
+                if(violation == 1)
                     return false;
-                }
                 //if no prev violation, then violation++
                 violation++;
                
