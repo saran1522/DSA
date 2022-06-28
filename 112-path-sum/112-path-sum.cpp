@@ -16,8 +16,6 @@ public:
             return false;
         if(!root->left&&!root->right)
             return root->val==t;
-        bool left=hasPathSum(root->left,t-root->val);
-        bool right=hasPathSum(root->right,t-root->val);
-        return left||right;
+        return hasPathSum(root->left,t-root->val) || hasPathSum(root->right,t-root->val);
     }
 };
