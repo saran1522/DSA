@@ -20,24 +20,23 @@ public:
         }
         return -1;
     }
-    TreeNode* solve(vector<int>& preorder, vector<int>& inorder,int &preInd, int inSind,int inEind)//, unordered_map<int,int>eleInd )
+    TreeNode* solve(vector<int>& preorder, vector<int>& inorder,int &preInd, int inSind,int inEind)
     {
         if(preInd>=preorder.size()||inSind>inEind)
             return NULL;
         
-        int element=preorder[preInd];
-        preInd+=1;
+        int element=preorder[preInd++];
         TreeNode* root=new TreeNode(element);
         int pos=givePos(element,inorder);
-        root->left=solve(preorder,inorder,preInd,inSind,pos-1);//,eleInd);
-        root->right=solve(preorder,inorder,preInd,pos+1,inEind);//,eleInd);
+        
+        root->left=solve(preorder,inorder,preInd,inSind,pos-1);
+        root->right=solve(preorder,inorder,preInd,pos+1,inEind);
+        
         return root;
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int preInd=0;
-        //unordered_map<int,int>eleInd;
-        //linkMap(inorder,eleInd);
-        TreeNode* ans= solve(preorder,inorder,preInd,0,inorder.size()-1);//,eleInd);
+        TreeNode* ans= solve(preorder,inorder,preInd,0,inorder.size()-1);
         return ans;
     }
 };
