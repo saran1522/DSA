@@ -11,32 +11,30 @@
  */
 class Solution {
 public:
-    int givePos(int ele,vector<int>inorder)
+    int givePos(vector<int>in,int ele)
     {
-        for(int i=0;i<inorder.size();++i)
+        for(int i=0;i<in.size();++i)
         {
-            if(inorder[i]==ele)
+            if(in[i]==ele)
                 return i;
         }
         return -1;
     }
-    TreeNode* solve(vector<int>& preorder, vector<int>& inorder,int &preInd, int inSind,int inEind)
+    TreeNode* solve(vector<int>pre,vector<int>in,int &preInd, int inStInd,int inEndInd)
     {
-        if(preInd>=preorder.size()||inSind>inEind)
+        if(preInd>=pre.size()||inStInd>inEndInd)
             return NULL;
-        
-        int element=preorder[preInd++];
-        TreeNode* root=new TreeNode(element);
-        int pos=givePos(element,inorder);
-        
-        root->left=solve(preorder,inorder,preInd,inSind,pos-1);
-        root->right=solve(preorder,inorder,preInd,pos+1,inEind);
-        
+        int ele=pre[preInd++];
+        TreeNode* root=new TreeNode(ele);
+        int pos=givePos(in,ele);
+        cout<<"Pos: "<<pos<<"   ";
+        root->left=solve(pre,in,preInd,inStInd,pos-1);
+        root->right=solve(pre,in,preInd,pos+1,inEndInd);
         return root;
     }
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    TreeNode* buildTree(vector<int>& pre, vector<int>& in) {
         int preInd=0;
-        TreeNode* ans= solve(preorder,inorder,preInd,0,inorder.size()-1);
+        TreeNode* ans=solve(pre,in,preInd,0,in.size()-1);
         return ans;
     }
 };
