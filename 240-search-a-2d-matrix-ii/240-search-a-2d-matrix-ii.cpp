@@ -7,10 +7,7 @@ public:
         {
             if(matrix[row][col]==t)
                 return true;
-            else if(matrix[row][col]>t)
-                col--;
-            else
-                row++;
+            matrix[row][col]>t ? col-- : row++;
         }
         return false;
     }
