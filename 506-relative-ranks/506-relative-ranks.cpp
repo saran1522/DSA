@@ -2,15 +2,11 @@ class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& s) {
        vector<string>ans(s.size());
-       set<pair<int,int>>st;
+        map<int,int>mp;
         for(int i=0;i<s.size();++i)
-        {
-            pair<int,int>p=make_pair(s[i],i);
-            st.insert(p);
-        }
-        int n=s.size();
-        int j=n;
-        for(auto &i:st)
+           mp[s[i]]=i;
+        int j=s.size();
+        for(auto &i:mp)
         {
             cout<<i.first<<" "<<i.second<<endl;
             if(j==1)
