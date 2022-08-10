@@ -15,7 +15,7 @@ public:
     {
         if(s>e)
             return NULL;
-        int mid=s+(e-s)/2;
+        int mid=(s+e)/2;
         TreeNode* root=new TreeNode(nums[mid]);
         root->left=buildTree(nums,s,mid-1);
         root->right=buildTree(nums,mid+1,e);
