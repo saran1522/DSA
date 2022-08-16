@@ -5,12 +5,9 @@ public:
         int ans=INT_MAX;
         char c='A';
         for(int i=0;i<s.size();++i)
-        {
             mp[s[i]]++;
-        }
         for(auto &i:mp)
         {
-            cout<<i.first<<" "<<i.second<<endl;
             if(i.second==1)
             {
                 int ind=s.find(i.first);
