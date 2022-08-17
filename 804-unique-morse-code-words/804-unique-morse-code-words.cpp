@@ -1,24 +1,14 @@
 class Solution {
 public:
     int uniqueMorseRepresentations(vector<string>& words) {
-        vector<string>table={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-        unordered_map<char,string>mp;
-        int i=0;
-        for(char c='a';c<='z';++i,++c)
-            mp[c]=table[i];
-        
-        for(auto ele:mp)
-            cout<<ele.first<<" "<<ele.second<<endl;
-        
+        vector<string>morse_code={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
         unordered_set<string>st;
-        for(int j=0;j<words.size();++j)
+        for(auto &w:words)
         {
-            string s=words[j],ans="";
-            for(int k=0;k<s.size();++k)
-            {
-                ans+=mp[s[k]];
-            }
-            st.insert(ans);
+            string code="";
+            for(auto &c:w)
+                code+=morse_code[c-'a'];
+            st.insert(code);
         }
         return st.size();
     }
