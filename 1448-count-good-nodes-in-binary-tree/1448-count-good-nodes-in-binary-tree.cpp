@@ -16,8 +16,10 @@ public:
         if(!root)
             return;
         if(root->val>=maxVal)
+        {
             cnt++;
-        maxVal=max(maxVal,root->val);
+            maxVal=root->val;
+        }
         solve(root->left, maxVal, cnt);
         solve(root->right, maxVal, cnt);
     }
