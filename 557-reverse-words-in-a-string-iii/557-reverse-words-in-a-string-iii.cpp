@@ -1,32 +1,14 @@
 class Solution {
 public:
-    void reverse(string &s1)
-    {
-        int s=0,e=s1.size()-1;
-        while(s<e){
-            swap(s1[s++],s1[e--]);
-        }
-    }
-    
-    string reverseWords(string s) {
-        string ans, s1="", s2="";
-        for(int i=0;i<s.size();++i){
-            if(s[i]==' ')
-            {
-                reverse(s1);
-                s2=s2+s1;
-                s2=s2 + " ";
-                s1.clear();
-            }
-            else
-            s1.push_back(s[i]);
-            
-            if(i==s.size()-1)
-            {
-                reverse(s1);
-                s2=s2+s1;
+    string reverseWords(string& s) {
+        int i = 0;
+        for (int j = 0; j < s.size(); ++j) {
+            if (s[j] == ' ') {
+                reverse(s.begin() + i, s.begin() + j);
+                i = j + 1;
             }
         }
-        return s2;
+        reverse(s.begin() + i, s.end());
+        return s;
     }
 };
