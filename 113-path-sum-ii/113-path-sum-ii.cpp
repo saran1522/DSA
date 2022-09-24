@@ -18,12 +18,12 @@ public:
         if(!root->left && !root->right)
         {
            sum+=root->val;
-           path.emplace_back(root->val);
+           path.push_back(root->val);
            if(sum==t)
-              ans.emplace_back(path);
+              ans.push_back(path);
            path.clear();
         }
-        path.emplace_back(root->val);
+        path.push_back(root->val);
         solve(root->left,ans,path,sum+root->val,t);
         solve(root->right,ans,path,sum+root->val,t);
     }
