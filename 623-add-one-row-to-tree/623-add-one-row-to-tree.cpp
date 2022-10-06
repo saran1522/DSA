@@ -11,23 +11,7 @@
  */
 class Solution {
 public:
-    
-    TreeNode* addOneRow(TreeNode* root, int v, int d, bool isLeft = true) {
-        if ( d == 1 )
-        {
-            TreeNode *left = isLeft? root : NULL, *right = isLeft? NULL : root;
-            return new TreeNode(v, left, right);
-        }
-            
-        if ( root )
-        {
-            root->left = addOneRow(root->left, v, d - 1);
-            root->right = addOneRow(root->right, v, d - 1, false);
-        }
-            
-        return root;
-    }
-    /*void solve(TreeNode* &root, int val, int depth)
+    void solve(TreeNode* &root, int val, int depth)
     {
         if(!root)
             return;
@@ -41,8 +25,8 @@ public:
             root->right=tempRight;
             return;
         }
-        solve(root->left,val,--depth);
-        solve(root->right,val,--depth);
+        solve(root->left,val,depth-1);
+        solve(root->right,val,depth-1);
     }
     TreeNode* addOneRow(TreeNode* root, int val, int depth) {
         if(depth==1)
@@ -53,5 +37,5 @@ public:
         }
         solve(root,val,depth-1);
         return root;
-    }*/
+    }
 };
