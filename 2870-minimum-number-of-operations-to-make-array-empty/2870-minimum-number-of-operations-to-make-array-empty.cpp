@@ -9,13 +9,9 @@ public:
         for(auto &it:mp)
         {
             int freq = it.second;
-            if(freq==1)
-                return -1;
-            if(freq != 4)
-            {
-                ans += freq/3;
-                freq = freq%3;
-            }
+            if(freq==1) return -1;
+            ans += freq/3;
+            freq = freq%3;
             ans += freq/2;
             if(freq==1)
                 ans++;
