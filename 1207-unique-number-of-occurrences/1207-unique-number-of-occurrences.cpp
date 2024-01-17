@@ -2,11 +2,19 @@ class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
         unordered_map<int,int>mp;
-        unordered_set<int>st;
-        for(auto i:arr)
-            mp[i]++;
-        for(auto m:mp)
-            st.insert(m.second);
-        return mp.size()==st.size();
+        for(int i =0;i<arr.size();++i)
+            mp[arr[i]]++;
+        
+        vector<int>v;
+        for(auto &it: mp)
+            v.push_back(it.second);
+        
+        sort(v.begin(),v.end());
+        for(int i=0;i<v.size()-1;++i)
+        {
+            if(v[i]==v[i+1])
+                return false;
+        }
+        return true;
     }
 };
