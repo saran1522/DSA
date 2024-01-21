@@ -1,19 +1,23 @@
 class Solution {
 public:
-    int rob(vector<int>& nums) {
-        int n=nums.size();
-        vector<int>dp(n,-1);
-        dp[0]=nums[0];
-        if(nums.size()==1)
+    int solve(vector<int>& nums, int n, vector<int>&dp)
+    {
+        if(n<0)
+            return 0;
+        
+        if(n == 0)
             return nums[0];
-        for(int i=1;i<n;++i)
-        {
-            int house1=nums[i];
-            if(i-2>=0)
-              house1+=dp[i-2];
-            int house2=0+dp[i-1];
-            dp[i]=max(house1,house2);
-        }
-        return dp[n-1];
+        
+        if(dp[n] != -1)
+            return dp[n];
+        
+        int money1 = nums[n] + solve(nums, n-2, dp);
+        int money2 = solve(nums, n-1, dp);
+        dp[n] = max(money1, money2);
+        return dp[n];
+    }
+    int rob(vector<int>& nums) {
+       vector<int>dp(nums.size(), -1);
+       return solve(nums, nums.size()-1, dp);
     }
 };
