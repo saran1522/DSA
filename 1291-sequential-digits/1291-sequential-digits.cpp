@@ -2,16 +2,16 @@ class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) {
         vector<int>ans;
-        int lim = 11, num = 12, comp=12, i=3;
-        while(comp <= high)
+        int add = 11, base=12, num = 12, i=3;
+        while(num <= high)
         {
-            if(comp>=low && comp<=high)
-                ans.push_back(comp);
-            comp += lim;
-            if(comp%10 == 0){
-                lim = lim*10 +1;
-                num = num*10+i;
-                comp = num;
+            if(num>=low && num<=high)
+                ans.push_back(num);
+            num += add;
+            if(num%10 == 0){
+                add = add*10 +1;
+                base = base*10+i;
+                num = base;
                 i++;
             }
                 
