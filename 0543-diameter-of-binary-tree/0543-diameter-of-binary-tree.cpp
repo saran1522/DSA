@@ -11,20 +11,24 @@
  */
 class Solution {
 public:
+    // make a result variable and pass it by referance bec it will store the res
+    // if root is null then reuturn 0
+    // find nodes in right side of the root and left side of the root
+    // the diameter can be longest at any point (if without including root the sum of left and right part is greater) so we will store max of diameter (left + right) and prev res in the res
+    // now we have to send the length of longer side to the node above
+    // so will return max(left, right) +1 (+1 of the node itself)
     int nodes(TreeNode* root, int &res){
         if(!root)
             return 0;
-        int left = 1+nodes(root->left,res); // at 1 => 1 + 2 =3
-        int right = 1+nodes(root->right,res); // at 1 => 1 +1 =2
-        int sum = left + right - 1; // at 2 => 3 + 2 -1 = 4
+        int left = nodes(root->left,res);
+        int right = nodes(root->right,res);
+        int sum = left + right;
         res = max(res,sum);
-        cout<<root->val<<" "<<res<<endl;
-        int ans = left>right?left:right; // 3
-        return ans;
+        return 1 + max(left,right);
     }
     int diameterOfBinaryTree(TreeNode* root) {
         int res = 0;
-        int x = nodes(root, res);
-        return res-1;
+        nodes(root, res);
+        return res;
     }
 };
