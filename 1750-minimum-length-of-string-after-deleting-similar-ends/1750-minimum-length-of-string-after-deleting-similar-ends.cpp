@@ -6,21 +6,12 @@ public:
     // return the r-l + 1
     int minimumLength(string s) {
         int l =0, r=s.size()-1;
-        while(l<r){
-            char same;
-            if(s[l]==s[r])
-                same = s[l];
-            else break;
-            while(s[l]==same && l<=r){
-                s[l]='x';
+        while(l<r && s[l] == s[r]){
+            char same = s[l];
+            while(s[l]==same && l<=r)
                 l++;
-            }
-                
-            while(s[r]==same && l<=r){
-                s[r]='y';
+            while(s[r]==same && l<=r)
                 r--;
-            }
-                
         }
         return r-l+1;
     }
