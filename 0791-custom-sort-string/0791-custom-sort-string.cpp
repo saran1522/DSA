@@ -16,18 +16,15 @@ public:
             mp[s[i]]++;
         
         string ans = "";
-        for(int i =0; i<order.size();++i){
-            if(mp.find(order[i]) != mp.end()){
-                while(mp[order[i]]--)
-                    ans += order[i];
+        for(auto &c: order){
+            if(mp.find(c) != mp.end()){
+                ans.append(mp[c],c);
+                mp.erase(c);
             }
         }
        
-        for(auto &it:mp){
-            if(ans.find(it.first)==string::npos)
-                while(it.second--)
-                    ans += it.first;
-        }
+        for(auto &it:mp)
+            ans.append(it.second, it.first);
         
         return ans;
     }
