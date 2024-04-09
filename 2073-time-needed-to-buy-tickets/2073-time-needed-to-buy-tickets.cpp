@@ -3,15 +3,10 @@ public:
     int timeRequiredToBuy(vector<int>& tik, int k) {
         int time = 0;
         for(int i=0;i<tik.size();++i){
-            if(tik[i]<tik[k]){
-                time += tik[i];
-            }
-            else{
                 if(i<=k)
-                    time += tik[k];
+                    time += min(tik[i],tik[k]);
                 else
-                    time += tik[k]-1;
-            }
+                    time += min(tik[i],tik[k]-1);
         }
         return time;
     }
