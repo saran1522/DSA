@@ -29,15 +29,6 @@ public:
         return dec;
     }
     
-    void printGrid(vector<vector<int>>& grid, int n, int m){
-        for(int i=0;i<n;++i){
-            for(int j=0; j<m;++j)
-                cout<<grid[i][j]<<" ";
-            cout<<endl;
-        }
-        cout<<"-------------------"<<endl;
-    }
-    
     int matrixScore(vector<vector<int>>& grid) {
         int n = grid.size();
         int m = grid[0].size();
@@ -46,9 +37,6 @@ public:
                 flipRows(grid, i);
             }
         }
-        
-        // printGrid(grid,n,m);
-        
         
         for(int i=0;i<m;++i){
             int one = 0, zero=0;
@@ -63,15 +51,10 @@ public:
             }
         }
         
-        // printGrid(grid,n,m);
-        
         int sum =0;
         for(int i=0;i<n;++i){
-            // for(int j=0; j<m;++j)
-            //     cout<<grid[i][j]<<" ";
-            // cout<<endl;
             sum += convertToDecimal(grid, i);
         }
-    return sum;
+        return sum;
     }
 };
